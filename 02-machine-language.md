@@ -85,4 +85,68 @@ It won't! It's an infinite loop. It's only gonna stop when our program tells it 
 
 The loader places the "return address" in `$31`. To stop, a program must jump to this return address.
 
+### Add instruction
 
+We want to do this: `$d = $s + $t`
+
+Instruction shorthand: `add $d, $s, $t`
+
+Actual instruction in binary:
+
+|||||||
+|--|--|--|--|--|--|
+|`000000`|`sssss`|`ttttt`|`ddddd`|`00000`|`100000`|
+
+In hex:
+
+|||||||||
+|--|--|--|--|--|--|--|--|
+|`0000`|`0000`|`1010`|`0111`|`0001`|`1000`|`0010`|`0000`|
+|`0`|`0`|`A`|`7`|`1`|`8`|`2`|`0`|
+
+#### Example: Copy value stored in $3 to $8
+
+`add $8, $3, $0`
+
+|||||||
+|--|--|--|--|--|--|
+|`000000`|`00011`|`00000`|`01000`|`00000`|`100000`|
+
+In hex:
+
+|||||||||
+|--|--|--|--|--|--|--|--|
+|`0000`|`0000`|`0110`|`0000`|`0100`|`0000`|`0010`|`0000`|
+|`0`|`0`|`6`|`0`|`4`|`0`|`2`|`0`|
+
+#### Example: Clear a register
+
+`add $3, $0, $0`
+
+### Jump Instruction
+
+`jr $s`
+
+It sets `PC` to `$s`
+
+- Treat the value in `$s` as an address
+- Recall PC is set to the next instruction to execute
+
+Actual instruction in binary:
+
+|||||||
+|--|--|--|--|--|--|
+|`000000`|`sssss`|`00000`|`00000`|`00000`|`001000`|
+
+In hex:
+
+|||||||||
+|--|--|--|--|--|--|--|--|
+|`0000`|`0011`|`1110`|`0000`|`0000`|`0000`|`0000`|`1000`|
+|`0`|`3`|`E`|`0`|`0`|`0`|`0`|`8`|
+
+### Subtract
+
+`$d = $s - $t`
+
+`sub $d, $s, $t`
