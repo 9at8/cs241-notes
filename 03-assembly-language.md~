@@ -1,0 +1,114 @@
+# Assembly Language
+
+It is a textual representation of binary language.
+
+Example: Compute absolute value of `$1` into `$3`
+
+## `slt` set less than
+
+`slt $d, $s, $t`
+
+### What does it do?
+
+Sets `$d` to 1 if `$s < $t`, otherwise `$d = 0`
+
+## `beq` branch equal
+
+`beq $s, $t, i`
+
+`i` can be negative or positive, and it's a 2s complement number
+
+### What does it do?
+
+`$s == $t` && `PC = PC + (i * 4)`
+
+Similar command: `bne` branch not equal
+
+### Examples
+
+```assembly
+slt $2, $1, $0
+beq $2, $0, 1
+sub $1, $0, $1
+jr #31
+```
+
+```assembly
+slt $2, $1, $0
+bne $2, $0, 2
+jr $31
+sub $1, $0, $1
+jr $31
+```
+
+Q: Calculate 13 + 12 + 11 + ... + 1 and store the result in `$3`
+
+```assembly
+lis $2
+.word 13
+add $3, $0, $0
+add $3, $3, $2
+lis $1
+.word -1
+add $2, $2, $1
+bne $2, $0, -5
+jr $31
+```
+
+A little bit optimized version:
+
+```assembly
+lis $2
+.word 13
+lis $1
+.word -1
+add $3, $0, $0
+add $3, $3, $2
+add $2, $2, $1
+bne $2, $0, -3
+jr $31
+```
+
+We can move these conditions because we don't need to initialize `$1` with -1 again and again
+
+## Assembly labels (directives)
+
+When you declare a label, it is associated with the instruction at that label. When the label is used in `beq`/`bne`, the assembler computes the offset = `label-offset - PC`
+
+```assembly
+lis $2
+.word 13
+lis $1
+.word -1
+add $3, $0, $0
+loop: add $3, $3, $2
+add $2, $2, $1
+bne $2, $0, loop
+jr $31
+```
+
+## `lw`: Load Word
+
+`lw $t, i($s)`
+
+$t <- MEM[$s +i]
+
+## `sw`: store word
+
+`sw $t, i($s)`
+
+## Special Address
+
+`0xffff000c`
+
+Storing a value to this address will cause the least significant byte to `stdout`
+
+```assembly
+lis $1
+.word 0xffff000c
+lis $2
+.word 67
+sw $2, 0($1)   ; outputs C to stdout
+```
+
+Check google pictures for a picture of the the board: Tuesday, May 8

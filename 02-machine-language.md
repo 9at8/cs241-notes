@@ -150,3 +150,50 @@ In hex:
 `$d = $s - $t`
 
 `sub $d, $s, $t`
+
+### Load Immediate Skip (`lis`)
+
+`lis $d`
+
+|||||||
+|--|--|--|--|--|--|
+|`000000`|`00000`|`00000`|`ddddd`|`00000`|`010100`|
+
+`$d` <- MEM[PC]; PC = PC + 4
+
+```
+lis $5     // 0x00002814
+.word 42   // 0x0000002A
+
+lis $7     // 0x00003814
+.word 52   // 0x00000034
+
+add $3, $5, $7   // 0x00A71820
+jr #31           // 0x03E00008
+```
+
+## Tools
+
+### `cs241.wordasm`
+
+input: lines in hexadecimal
+
+output: binary representation
+
+Note: See a1 for usage
+
+Also use `$ xxd -b` to see the binary representation which is generated
+
+### Simulator `mips.twoints`
+
+Usage:
+
+```bash
+$ mips.twoints <mips file>
+```
+
+## Conclusion
+
+A1 requires writing machine language in hexadecimal. This is error prone and very tedious. Lets make life simpler by using assembly language.
+
+Assembly language is a textual representation of machine language
