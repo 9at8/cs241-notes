@@ -91,13 +91,13 @@ We want to write a recognizer by reading the input word exactly once and without
 
 ### Bubble Diagram
 
-_Check picture taken on May 17, 2018_
+![Bubble diagram example](/assets/06-formal-languages-bubble-diagram-example.jpg)
 
 Can we generalize this to other finite languages? Yes!
 
 For MIPS keywords:
 
-_Check picture taken on May 17, 2018_
+![Mips bubble diagram](/assets/06-formal-languages-bubble-diagram-mips.jpg)
 
 But the problem, is that most languages are not finite
 
@@ -159,17 +159,17 @@ Regular languages are often used in scanning phase.
 
 DFA for labels in MIPS assembly:
 
-_Check picture takenon May 24, 2018_
+![DFA for labels in MIPS assembly](/assets/06-formal-languages-dfa-labels.jpg)
 
 DFA for valid registers in MIPS assembly:
 
 Incorrect:
 
-_Check picture taken on May 24, 2018_
+![Incorrect MIPS register DFA](/assets/06-formal-languages-dfa-incorrect-registers.jpg)
 
 Correct:
 
-_Check picture taken on May 24, 2018_
+![Correct MIPS register DFA](/assets/06-formal-languages-dfa-correct-registers.jpg)
 
 Input word `w = a1, a2, a3, ...`
 
@@ -198,19 +198,19 @@ We assume the presence of a hidden/implicit error state.
 
 DFA to represent all binary numbers:
 
-_Check picture taken on May 24, 2018_
+![All binary numbers DFA](/assets/06-formal-languages-dfa-binary-numbers.jpg)
 
 DFA to represent binary numbers and calculate their decimal value
 
-_Check picture taken on May 24, 2018_
+![Calcularing decimal value for binary numbers DFA](/assets/06-formal-languages-dfa-binary-numbers-to-decimal.jpg)
 
 DFAs for decimal numbers and hexadecimal numbers
 
-_Check picture taken on May 24, 2018_
+![Decimal number and hexadecimal numbers DFA](/assets/06-formal-languages-dfa-decimal-hex-numbers.jpg)
 
 How do we make a union of these two?
 
-_Check picture taken on May 24, 2018_
+![Decimal and hexadecimal union DFA](/assets/06-formal-languages-dfa-dec-plus-hex.jpg)
 
 We can't! This will not be deterministic as we have a choice on which path to take. This is a Nondeterministic Finite Automata `NFA`
 

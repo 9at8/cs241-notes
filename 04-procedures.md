@@ -45,11 +45,11 @@ lw $5, -4($30)
 
 ## Problem 2
 
-Procedures are created by using a label and thenwriting the procedure body.
+Procedures are created by using a label and then writing the procedure body.
 
 ### Failed attempt
 
-_Picture taken on May 10, 2018_
+![Failed attempt for making implementing a procedure with labels](/assets/04-procedures-failed-attempt.jpg)
 
 ### Fix: `jalr` Jump to Link Register
 

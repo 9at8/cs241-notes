@@ -1,6 +1,6 @@
 # Assembler
 
-_Check picture from May 10_
+![Assembler Idea](/assets/05-assembler-main-idea.jpg)
 
 ## Stages
 
