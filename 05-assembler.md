@@ -201,3 +201,4 @@ In racket, ther's a function called `writebyte` which is used to, well, write by
 The last `iiiiiiii...` will be encoded at `...1111101` which start with `1`s. So when we `|` it, our instruction would be made up of `1`s
 
 So we need to make sure that all the bits except the needed bits are 0, so we can `&` those with `0xffff`
+
